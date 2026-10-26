@@ -380,6 +380,7 @@
 
         events: {
           onReady: function(event) {
+            try { event.target.unloadModule('captions'); event.target.unloadModule('cc'); } catch (e) {}
             setInterval(function() {
               if (
                 player.getPlayerState() ===
@@ -398,6 +399,7 @@
 
           onStateChange: function(event) {
             if (event.data === YT.PlayerState.PLAYING) {
+              try { player.unloadModule('captions'); player.unloadModule('cc'); } catch (e) {}
               if (!videoEstavaAReproduzir) {
                 registarEventoGoogle('video_start', {
                   video_id: 'SN2sl6l20Y8',
