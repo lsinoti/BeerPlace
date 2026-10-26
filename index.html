@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beer Place</title>
+
+  <!-- Google Analytics: consentimento negado por defeito -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-P6QCEYDCCV');
+  </script>
+
+  <script async
+    src="https://www.googletagmanager.com/gtag/js?id=G-P6QCEYDCCV">
+  </script>
+
+  <!-- GoatCounter: contagem sem cookies -->
+  <script
+    data-goatcounter="https://beerplace-sinoti.goatcounter.com/count"
+    async
+    src="https://gc.zgo.at/count.js">
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Vídeo */
+    #player {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Convite aos 1:52 */
+    #convite {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 16px 24px;
+      background: rgba(16, 24, 32, 0.94);
+      color: white;
+      text-align: center;
+      z-index: 10;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
+    }
+
+    #convite h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    #convite p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    /* Botões WhatsApp */
+    .whatsapp {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 15px 24px;
+      background: #25D366;
+      color: white;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #convite .whatsapp {
+      margin-top: 12px;
+      padding: 13px 20px;
+      font-size: 16px;
+    }
+
+    /* Ecrã final */
+    #final {
+      display: none;
+      position: fixed;
+      inset: 0;
+      padding: 24px;
+      background: #101820;
+      color: white;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 20;
+    }
+
+    #final h1 {
+      font-size: clamp(28px, 6vw, 46px);
+      margin-bottom: 12px;
+    }
+
+    #final p {
+      font-size: clamp(18px, 4vw, 24px);
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    /* Aviso de cookies discreto */
+    #avisoPrivacidade {
+      display: none;
+      position: fixed;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 20px);
+      max-width: 440px;
+      padding: 9px 11px;
+      background: rgba(16, 24, 32, 0.92);
+      color: #fff;
+      border-radius: 8px;
+      z-index: 30;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    #avisoPrivacidade p {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.botoesPrivacidade {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+    .botoesPrivacidade button {
+      border: 1px solid rgba(255,255,255,0.5);
+      background: transparent;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    #aceitarAnalise {
+      background: #fff;
+      color: #101820;
+      border-color: #fff;
+      font-weight: bold;
+    }
+
+    /* Não tapar o convite do vídeo */
+    body:has(#convite[style*="block"]) #avisoPrivacidade {
+      bottom: auto;
+      top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Vídeo YouTube -->
+  <div id="player"></div>
+
+  <!-- Convite aos 1:52 -->
+  <div id="convite">
+    <h2>Pensa em comprar ou vender?</h2>
+    <p>
+      Fale comigo agora mesmo e tenha a experiência
+      do melhor atendimento!
+    </p>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/351915892555?text=Ol%C3%A1%2C%20vi%20o%20seu%20v%C3%ADdeo%20no%20Beer%20Place%20e%20gostaria%20de%20falar%20consigo."
+      target="_blank"
+      rel="noopener noreferrer">
+      Falar comigo no WhatsApp
+    </a>
+  </div>
+
+  <!-- Ecrã final -->
+  <div id="final">
+    <h1>Pensa em comprar ou vender?</h1>
+    <p>
+      Fale comigo agora mesmo e tenha a experiência
+      do melhor atendimento!
+    </p>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/351915892555?text=Ol%C3%A1%2C%20vi%20o%20seu%20v%C3%ADdeo%20no%20Beer%20Place%20e%20gostaria%20de%20falar%20consigo."
+      target="_blank"
+      rel="noopener noreferrer">
+      Falar comigo no WhatsApp
+    </a>
+  </div>
+
+  <!-- Aviso de cookies -->
+  <div id="avisoPrivacidade">
+    <p>
+      Este site utiliza cookies para estatísticas.
+      <a
+        href="https://policies.google.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color:#fff;text-decoration:underline;">
+        Privacidade
+      </a>
+    </p>
+
+    <div class="botoesPrivacidade">
+      <button id="recusarAnalise" type="button">
+        Recusar
+      </button>
+      <button id="aceitarAnalise" type="button">
+        Aceitar
+      </button>
+    </div>
+  </div>
+
+  <script>
+    /* Consentimento Google Analytics */
+    var consentimento = null;
+
+    try {
+      consentimento = localStorage.getItem(
+        'beerplace_consentimento_analytics'
+      );
+    } catch (erro) {
+      consentimento = null;
+    }
+
+    var avisoPrivacidade =
+      document.getElementById('avisoPrivacidade');
+
+    function aceitarConsentimento() {
+      consentimento = 'aceite';
+
+      gtag('consent', 'update', {
+        analytics_storage: 'granted'
+      });
+
+      try {
+        localStorage.setItem(
+          'beerplace_consentimento_analytics',
+          'aceite'
+        );
+      } catch (erro) {}
+
+      avisoPrivacidade.style.display = 'none';
+    }
+
+    function recusarConsentimento() {
+      consentimento = 'recusado';
+
+      gtag('consent', 'update', {
+        analytics_storage: 'denied'
+      });
+
+      try {
+        localStorage.setItem(
+          'beerplace_consentimento_analytics',
+          'recusado'
+        );
+      } catch (erro) {}
+
+      avisoPrivacidade.style.display = 'none';
+    }
+
+    document.getElementById('aceitarAnalise')
+      .addEventListener('click', aceitarConsentimento);
+
+    document.getElementById('recusarAnalise')
+      .addEventListener('click', recusarConsentimento);
+
+    if (consentimento === 'aceite') {
+      gtag('consent', 'update', {
+        analytics_storage: 'granted'
+      });
+    } else if (consentimento === null) {
+      avisoPrivacidade.style.display = 'block';
+    }
+
+    /* Google Analytics: apenas com consentimento */
+    function registarEventoGoogle(nome, parametros) {
+      if (consentimento === 'aceite') {
+        gtag('event', nome, parametros || {});
+      }
+    }
+
+    /* GoatCounter: eventos sem cookies */
+    function registarEventoGoat(caminho, titulo) {
+      if (
+        window.goatcounter &&
+        typeof window.goatcounter.count === 'function'
+      ) {
+        window.goatcounter.count({
+          path: caminho,
+          title: titulo,
+          event: true
+        });
+      }
+    }
+
+    /* Cliques nos botões WhatsApp */
+    document.querySelectorAll('.whatsapp').forEach(
+      function(botao) {
+        botao.addEventListener('click', function() {
+          var localBotao =
+            botao.closest('#final')
+              ? 'tela_final'
+              : 'convite_video';
+
+          registarEventoGoogle('whatsapp_click', {
+            local_botao: localBotao
+          });
+
+          registarEventoGoat(
+            'whatsapp_click_' + localBotao,
+            'Clique WhatsApp - ' + localBotao
+          );
+        });
+      }
+    );
+
+    /* API do YouTube */
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+
+    var player;
+    var convite = document.getElementById('convite');
+    var telaFinal = document.getElementById('final');
+    var momentoConvite = 112;
+    var videoEstavaAReproduzir = false;
+
+    function mostrarTelaFinal() {
+      convite.style.display = 'none';
+      document.getElementById('player').style.display = 'none';
+      telaFinal.style.display = 'flex';
+    }
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'SN2sl6l20Y8',
+
+        playerVars: {
+          autoplay: 1,
+          playsinline: 1,
+          rel: 0,
+          cc_load_policy: 0,
+          enablejsapi: 1
+        },
+
+        events: {
+          onReady: function(event) {
+            setInterval(function() {
+              if (
+                player.getPlayerState() ===
+                YT.PlayerState.PLAYING
+              ) {
+                var tempoAtual = player.getCurrentTime();
+
+                if (tempoAtual >= momentoConvite) {
+                  convite.style.display = 'block';
+                } else {
+                  convite.style.display = 'none';
+                }
+              }
+            }, 250);
+          },
+
+          onStateChange: function(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+              if (!videoEstavaAReproduzir) {
+                registarEventoGoogle('video_start', {
+                  video_id: 'SN2sl6l20Y8',
+                  video_title: 'Beer Place'
+                });
+
+                registarEventoGoat(
+                  'video_start',
+                  'Início do vídeo - Beer Place'
+                );
+
+                videoEstavaAReproduzir = true;
+              }
+            }
+
+
+if (event.data === YT.PlayerState.ENDED) {
+  registarEventoGoogle('video_complete', {
+    video_id: 'SN2sl6l20Y8',
+    video_title: 'Beer Place'
+  });
+
+  registarEventoGoat(
+    'video_complete',
+    'Vídeo assistido até ao fim - Beer Place'
+  );
+
+  mostrarTelaFinal();
+}
+
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
