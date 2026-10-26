@@ -131,19 +131,20 @@
     #avisoPrivacidade {
       display: none;
       position: fixed;
-      bottom: 8px;
+      top: max(12px, env(safe-area-inset-top));
+      bottom: auto;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - 20px);
+      width: calc(100% - 24px);
       max-width: 440px;
-      padding: 9px 11px;
+      padding: 12px 14px;
       background: rgba(16, 24, 32, 0.92);
       color: #fff;
       border-radius: 8px;
       z-index: 30;
       box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-      font-size: 11px;
-      line-height: 1.4;
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     #avisoPrivacidade p {
@@ -161,9 +162,10 @@
       border: 1px solid rgba(255,255,255,0.5);
       background: transparent;
       color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 11px;
+      padding: 9px 16px;
+      min-height: 40px;
+      border-radius: 6px;
+      font-size: 13px;
       cursor: pointer;
     }
 
@@ -174,11 +176,7 @@
       font-weight: bold;
     }
 
-    /* Não tapar o convite do vídeo */
-    body:has(#convite[style*="block"]) #avisoPrivacidade {
-      bottom: auto;
-      top: 8px;
-    }
+    /* Aviso permanece no topo, longe das legendas e do convite. */
   </style>
 </head>
 
