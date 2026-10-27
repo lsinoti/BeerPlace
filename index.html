@@ -366,7 +366,7 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        videoId: 'SN2sl6l20Y8',
+        videoId: '0Tk9M3D59GQ',
 
         playerVars: {
           autoplay: 1,
@@ -400,7 +400,7 @@
               try { player.unloadModule('captions'); player.unloadModule('cc'); } catch (e) {}
               if (!videoEstavaAReproduzir) {
                 registarEventoGoogle('video_start', {
-                  video_id: 'SN2sl6l20Y8',
+                  video_id: '0Tk9M3D59GQ',
                   video_title: 'Beer Place'
                 });
 
@@ -416,7 +416,7 @@
 
 if (event.data === YT.PlayerState.ENDED) {
   registarEventoGoogle('video_complete', {
-    video_id: 'SN2sl6l20Y8',
+    video_id: '0Tk9M3D59GQ',
     video_title: 'Beer Place'
   });
 
